@@ -10,22 +10,22 @@ services:
     networks:
       - jenkins-net
 
-#  agent-1:
-##    image: jenkins/inbound-agent:latest-jdk17
-#    build:
-#      context: .
-#      dockerfile: jenkins-agent.Dockerfile
-#    environment:
-#      - JENKINS_URL=http://jenkins:8080
-#      - JENKINS_AGENT_NAME=agent-1
-#      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
-#      - JENKINS_SECRET=${JENKINS_SECRET}   # to be read from the .env file
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock
-#    group_add:
-#      - ${DOCKER_GROUP_ID}     # to be read from the .env file
-#    networks:
-#      - jenkins-net
+  agent-1:
+#    image: jenkins/inbound-agent:latest-jdk17
+    build:
+      context: .
+      dockerfile: jenkins-agent.Dockerfile
+    environment:
+      - JENKINS_URL=http://jenkins:8080
+      - JENKINS_AGENT_NAME=agent-1
+      - JENKINS_AGENT_WORKDIR=/home/jenkins/agent
+      - JENKINS_SECRET=${JENKINS_SECRET}   # to be read from the .env file
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    group_add:
+      - ${DOCKER_GROUP_ID}     # to be read from the .env file
+    networks:
+      - jenkins-net
 
 volumes:
   jenkins_home:
